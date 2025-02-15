@@ -15,12 +15,19 @@ export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const { password, ...userData } = createUserDto;
+    const { password, email, ...userData } = createUserDto;
+
+    const emailDatabase = await this.userModel.findOne({ email }).exec();
+
+    if (emailDatabase) {
+      throw new BadRequestException(`This email already exists.`);
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = new this.userModel({
       ...userData,
+      email,
       password: hashedPassword,
     });
 
