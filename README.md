@@ -47,7 +47,7 @@ $ npm run test:cov
 
 ## Documentation
 
-To view the API documentation, run `npm run start:dev` and navigate to [http://localhost:3000/api](http://localhost:3000/api/docs) to access the Swagger UI.
+To view the API documentation, run `npm run start:dev` and navigate to [http://localhost:3000/api/docs](http://localhost:3000/api/docs) to access the Swagger UI.
 
 ## License
 
