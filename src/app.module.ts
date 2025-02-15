@@ -9,9 +9,9 @@ import { UsersModule } from './users/users.module';
 @Module({
   imports: [
     PancsModule,
-    MongooseModule.forRoot('mongodb://localhost:27017/osiris-nest'),
     RecipesModule,
     UsersModule,
+    MongooseModule.forRoot('mongodb://localhost:27017/osiris-nest'),
   ],
   controllers: [AppController],
   providers: [AppService],
