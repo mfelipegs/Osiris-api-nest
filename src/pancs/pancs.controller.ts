@@ -17,25 +17,8 @@ export class PancsController {
   constructor(private readonly pancsService: PancsService) {}
 
   @Post()
-  create(
-    @Body()
-    body: {
-      namePanc: string;
-      description: string;
-      cultivation: string[];
-      benefits: string;
-      image: string;
-      locale: string;
-    },
-  ) {
-    return this.pancsService.create(
-      body.namePanc,
-      body.description,
-      body.cultivation,
-      body.benefits,
-      body.image,
-      body.locale,
-    );
+  create(@Body() createPancDto: CreatePancDto) {
+    return this.pancsService.create(createPancDto);
   }
 
   @Get()
@@ -49,7 +32,7 @@ export class PancsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePancDto: any) {
+  update(@Param('id') id: string, @Body() updatePancDto: UpdatePancDto) {
     return this.pancsService.update(id, updatePancDto);
   }
 

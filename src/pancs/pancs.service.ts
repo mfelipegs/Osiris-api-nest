@@ -13,22 +13,8 @@ import { Panc } from './schemas/pancs.schema';
 export class PancsService {
   constructor(@InjectModel(Panc.name) private pancModel: Model<Panc>) {}
 
-  create(
-    namePanc: string,
-    description: string,
-    cultivation: string[],
-    benefits: string,
-    image: string,
-    locale: string,
-  ): Promise<Panc> {
-    const newPanc = new this.pancModel({
-      namePanc,
-      description,
-      cultivation,
-      benefits,
-      image,
-      locale,
-    });
+  create(createPancDto: CreatePancDto): Promise<Panc> {
+    const newPanc = new this.pancModel(createPancDto);
     return newPanc.save();
   }
 
@@ -48,7 +34,7 @@ export class PancsService {
     return panc;
   }
 
-  async update(id: string, updatePancDto: any): Promise<Panc> {
+  async update(id: string, updatePancDto: UpdatePancDto): Promise<Panc> {
     if (!isValidObjectId(id)) {
       throw new BadRequestException(`'${id}' is not a valid id`);
     }
