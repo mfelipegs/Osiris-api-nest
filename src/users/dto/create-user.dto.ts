@@ -9,6 +9,7 @@ import {
   IsBoolean,
   IsDateString,
   ValidateNested,
+  ValidateIf,
 } from 'class-validator';
 
 class SubscriptionDto {
@@ -16,11 +17,11 @@ class SubscriptionDto {
   @Transform(({ value }) => value ?? false)
   active: boolean;
 
-  @IsOptional()
+  @ValidateIf((o: { active: boolean }) => o.active === true)
   @IsDateString()
   startDate?: string;
 
-  @IsOptional()
+  @ValidateIf((o: { active: boolean }) => o.active === true)
   @IsDateString()
   endDate?: string;
 }
