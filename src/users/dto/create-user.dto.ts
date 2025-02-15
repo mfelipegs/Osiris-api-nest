@@ -51,4 +51,8 @@ export class CreateUserDto {
   @ValidateNested()
   @Type(() => SubscriptionDto)
   subscription?: SubscriptionDto;
+
+  @IsOptional()
+  @IsString()
+  image: string;
 }
