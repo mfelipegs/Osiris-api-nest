@@ -26,8 +26,22 @@ export class PancsService {
     return newPanc.save();
   }
 
-  findAll(): Promise<Panc[]> {
-    return this.pancModel.find().exec();
+  async list(page: number, itemsPerPage: number) {
+    const totalItems = await this.pancModel.countDocuments().exec();
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    const data = await this.pancModel
+      .find()
+      .skip((page - 1) * itemsPerPage)
+      .limit(itemsPerPage);
+
+    return {
+      data,
+      page,
+      itemsPerPage,
+      totalItems,
+      totalPages,
+    };
   }
 
   async findOne(id: string): Promise<Panc> {
