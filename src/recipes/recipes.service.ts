@@ -1,9 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
 import { Recipe } from './schemas/recipes.schema';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, isValidObjectId } from 'mongoose';
 
 @Injectable()
 export class RecipesService {
@@ -15,19 +19,47 @@ export class RecipesService {
     return newRecipe.save();
   }
 
-  findAll() {
-    return `This action returns all recipes`;
+  findAll(): Promise<Recipe[]> {
+    return this.recipeModel.find().exec();
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} recipe`;
+  async findOne(id: string): Promise<Recipe> {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException(`'${id}' is not a valid id`);
+    }
+
+    const recipe = await this.recipeModel.findById(id).exec();
+    if (!recipe) {
+      throw new NotFoundException(`Recipe ${id} not found`);
+    }
+    return recipe;
   }
 
-  update(id: string, updateRecipeDto: UpdateRecipeDto) {
-    return `This action updates a #${id} recipe`;
+  async update(id: string, updateRecipeDto: UpdateRecipeDto): Promise<Recipe> {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException(`'${id}' is not a valid id`);
+    }
+
+    const recipe = await this.recipeModel
+      .findByIdAndUpdate(id, updateRecipeDto, { new: true })
+      .exec();
+
+    if (!recipe) {
+      throw new NotFoundException(`Recipe ${id} not found`);
+    }
+
+    return recipe;
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} recipe`;
+  async remove(id: string) {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException(`'${id}' is not a valid id`);
+    }
+
+    const recipe = await this.recipeModel.findByIdAndDelete(id).exec();
+    if (!recipe) {
+      throw new NotFoundException(`Recipe ${id} not found`);
+    }
+    return recipe;
   }
 }
