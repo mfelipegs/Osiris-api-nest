@@ -30,7 +30,7 @@ export class PancsService {
     return this.pancModel.find().exec();
   }
 
-  async findOne(id: string): Promise<Panc | null> {
+  async findOne(id: string): Promise<Panc> {
     if (!isValidObjectId(id)) {
       throw new BadRequestException(`'${id}' is not a valid id`);
     }

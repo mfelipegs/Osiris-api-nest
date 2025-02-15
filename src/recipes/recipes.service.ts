@@ -7,10 +7,12 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class RecipesService {
-  constructor(@InjectModel(Recipe.name) private userModel: Model<Recipe>) {}
+  constructor(@InjectModel(Recipe.name) private recipeModel: Model<Recipe>) {}
 
-  create(createRecipeDto: CreateRecipeDto) {
-    return 'This action adds a new recipe';
+  create(createRecipeDto: CreateRecipeDto): Promise<Recipe> {
+    const newRecipe = new this.recipeModel(createRecipeDto);
+
+    return newRecipe.save();
   }
 
   findAll() {

@@ -38,7 +38,7 @@ export class UsersService {
     return this.userModel.find().exec();
   }
 
-  async findOne(id: string) {
+  async findOne(id: string): Promise<User> {
     if (!isValidObjectId(id)) {
       throw new BadRequestException(`'${id}' is not a valid id`);
     }
@@ -50,7 +50,7 @@ export class UsersService {
     return user;
   }
 
-  async update(id: string, updateUserDto: UpdateUserDto) {
+  async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
     if (!isValidObjectId(id)) {
       throw new BadRequestException(`'${id}' is not a valid id`);
     }

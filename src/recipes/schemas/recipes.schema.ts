@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types } from 'mongoose';
 
 @Schema()
 export class Recipe extends Document {
@@ -21,8 +21,8 @@ export class Recipe extends Document {
   @Prop()
   image: string;
 
-  @Prop({ required: true })
-  userId: string;
+  @Prop({ required: true, type: Types.ObjectId, ref: 'User' })
+  userId: Types.ObjectId;
 
   @Prop({ required: true })
   locale: string;
