@@ -49,7 +49,7 @@ export class PancsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePancDto: UpdatePancDto) {
+  update(@Param('id') id: string, @Body() updatePancDto: any) {
     return this.pancsService.update(id, updatePancDto);
   }
 
