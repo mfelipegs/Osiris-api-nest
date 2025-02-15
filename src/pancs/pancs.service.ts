@@ -1,8 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreatePancDto } from './dto/create-panc.dto';
 import { UpdatePancDto } from './dto/update-panc.dto';
-import { Model } from 'mongoose';
+import { Model, isValidObjectId } from 'mongoose';
 import { Panc } from './schemas/pancs.schema';
 
 @Injectable()
@@ -32,8 +36,16 @@ export class PancsService {
     return this.pancModel.find().exec();
   }
 
-  findOne(id: string) {
-    return this.pancModel.findById({ id });
+  async findOne(id: string): Promise<Panc | null> {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException(`'${id}' is not a valid id`);
+    }
+
+    const panc = await this.pancModel.findById(id).exec();
+    if (!panc) {
+      throw new NotFoundException(`PANC ${id} not found`);
+    }
+    return panc;
   }
 
   update(id: number, updatePancDto: UpdatePancDto) {
