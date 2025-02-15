@@ -1,4 +1,4 @@
-import { IsString, IsArray, IsNotEmpty } from 'class-validator';
+import { IsString, IsArray, IsNotEmpty, IsOptional } from 'class-validator';
 
 export class CreatePancDto {
   @IsString()
@@ -16,6 +16,7 @@ export class CreatePancDto {
   @IsNotEmpty()
   benefits: string;
 
+  @IsOptional()
   @IsString()
   image: string;
 
