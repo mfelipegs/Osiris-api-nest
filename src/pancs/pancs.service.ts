@@ -1,19 +1,39 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import { CreatePancDto } from './dto/create-panc.dto';
 import { UpdatePancDto } from './dto/update-panc.dto';
+import { Model } from 'mongoose';
+import { Panc } from './schemas/pancs.schema';
 
 @Injectable()
 export class PancsService {
-  create(createPancDto: CreatePancDto) {
-    return 'This action adds a new panc';
+  constructor(@InjectModel(Panc.name) private pancModel: Model<Panc>) {}
+
+  create(
+    namePanc: string,
+    description: string,
+    cultivation: string[],
+    benefits: string,
+    image: string,
+    locale: string,
+  ): Promise<Panc> {
+    const newPanc = new this.pancModel({
+      namePanc,
+      description,
+      cultivation,
+      benefits,
+      image,
+      locale,
+    });
+    return newPanc.save();
   }
 
-  findAll() {
-    return `This action returns all pancs`;
+  findAll(): Promise<Panc[]> {
+    return this.pancModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} panc`;
+  findOne(id: string) {
+    return this.pancModel.findById({ id });
   }
 
   update(id: number, updatePancDto: UpdatePancDto) {

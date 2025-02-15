@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PancsService } from './pancs.service';
 import { CreatePancDto } from './dto/create-panc.dto';
 import { UpdatePancDto } from './dto/update-panc.dto';
@@ -8,8 +16,25 @@ export class PancsController {
   constructor(private readonly pancsService: PancsService) {}
 
   @Post()
-  create(@Body() createPancDto: CreatePancDto) {
-    return this.pancsService.create(createPancDto);
+  create(
+    @Body()
+    body: {
+      namePanc: string;
+      description: string;
+      cultivation: string[];
+      benefits: string;
+      image: string;
+      locale: string;
+    },
+  ) {
+    return this.pancsService.create(
+      body.namePanc,
+      body.description,
+      body.cultivation,
+      body.benefits,
+      body.image,
+      body.locale,
+    );
   }
 
   @Get()
@@ -19,7 +44,7 @@ export class PancsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.pancsService.findOne(+id);
+    return this.pancsService.findOne(id);
   }
 
   @Patch(':id')

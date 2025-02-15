@@ -1,0 +1,6 @@
+### list pancs
+GET http://localhost:3000/pancs
+
+### get panc
+GET http://localhost:3000/pancs/67b06c3d5d2d63c951a4cfb1
+
