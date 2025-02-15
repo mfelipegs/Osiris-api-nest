@@ -48,11 +48,18 @@ export class PancsService {
     return panc;
   }
 
-  update(id: number, updatePancDto: UpdatePancDto) {
+  update(id: string, updatePancDto: UpdatePancDto) {
     return `This action updates a #${id} panc`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} panc`;
+  async remove(id: string) {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException(`'${id}' is not a valid id`);
+    }
+
+    const panc = await this.pancModel.findByIdAndDelete(id).exec();
+    if (!panc) {
+      throw new NotFoundException(`PANC ${id} not found`);
+    }
   }
 }
