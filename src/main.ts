@@ -7,6 +7,14 @@ import 'dotenv/config';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  app.setGlobalPrefix('v1');
+
+  app.enableVersioning({
+    type: VersioningType.URI,
+  });
+
+  app.useGlobalPipes(new ValidationPipe());
+
   const config = new DocumentBuilder()
     .setTitle('Osiris API')
     .setDescription(
@@ -21,12 +29,6 @@ async function bootstrap() {
     SwaggerModule.setup('api/docs', app, document);
   }
 
-  app.enableVersioning({
-    type: VersioningType.URI,
-  });
-
-  app.setGlobalPrefix('v1');
-  app.useGlobalPipes(new ValidationPipe());
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

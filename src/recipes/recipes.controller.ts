@@ -8,6 +8,7 @@ import {
   Delete,
   HttpCode,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { RecipesService } from './recipes.service';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
@@ -26,8 +27,15 @@ export class RecipesController {
 
   @Get()
   @UseGuards(AuthGuard)
-  findAll() {
-    return this.recipesService.findAll();
+  async findAll(
+    @Query('page') page = 1,
+    @Query('itemsPerPage') itemsPerPage = 5,
+  ) {
+    const result = await this.recipesService.list(
+      Number(page),
+      Number(itemsPerPage),
+    );
+    return result;
   }
 
   @Get(':id')

@@ -19,8 +19,23 @@ export class RecipesService {
     return newRecipe.save();
   }
 
-  findAll(): Promise<Recipe[]> {
-    return this.recipeModel.find().exec();
+  async list(page: number, itemsPerPage: number) {
+    const totalItems = await this.recipeModel.countDocuments().exec();
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    const data = await this.recipeModel
+      .find()
+      .sort({ createdAt: -1 })
+      .skip((page - 1) * itemsPerPage)
+      .limit(itemsPerPage);
+
+    return {
+      data,
+      page,
+      itemsPerPage,
+      totalItems,
+      totalPages,
+    };
   }
 
   async findOne(id: string): Promise<Recipe> {
