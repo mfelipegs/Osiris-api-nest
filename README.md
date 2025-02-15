@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+   <img src="https://github.com/davitorress/Osiris-app/assets/104948713/5dfe90f9-43a4-442d-b499-04a74b9bfc0a" width="500">
 </p>
 
   <p align="center">Osiris is an ongoing undergraduate project that promotes healthier eating through the use of Non-Conventional Food Plants (PANCs). It provides cultivation information, diverse recipes, and allows users to create their own recipes. This API refactor is developed using <a href="https://nestjs.com/">Nest.js</a>.
