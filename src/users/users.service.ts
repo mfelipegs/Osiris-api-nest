@@ -43,11 +43,30 @@ export class UsersService {
     return user;
   }
 
-  update(id: string, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: string, updateUserDto: UpdateUserDto) {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException(`'${id}' is not a valid id`);
+    }
+
+    const updatedUser = await this.userModel
+      .findByIdAndUpdate(id, updateUserDto, { new: true })
+      .exec();
+
+    if (!updatedUser) {
+      throw new NotFoundException(`User ${id} not found`);
+    }
+
+    return updatedUser;
   }
 
-  remove(id: string) {
-    return `This action removes a #${id} user`;
+  async remove(id: string) {
+    if (!isValidObjectId(id)) {
+      throw new BadRequestException(`'${id}' is not a valid id`);
+    }
+
+    const user = await this.userModel.findByIdAndDelete(id).exec();
+    if (!user) {
+      throw new NotFoundException(`User ${id} not found`);
+    }
   }
 }
