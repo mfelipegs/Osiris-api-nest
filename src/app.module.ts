@@ -6,6 +6,7 @@ import { PancsModule } from './pancs/pancs.module';
 import { RecipesModule } from './recipes/recipes.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import 'dotenv/config';
 
 @Module({
   imports: [
@@ -13,7 +14,9 @@ import { AuthModule } from './auth/auth.module';
     RecipesModule,
     UsersModule,
     AuthModule,
-    MongooseModule.forRoot('mongodb://localhost:27017/osiris-nest'),
+    MongooseModule.forRoot(
+      process.env.MONGO_URI || 'mongodb://localhost:27017/osiris-nest',
+    ),
   ],
   controllers: [AppController],
   providers: [AppService],
