@@ -30,7 +30,7 @@ export class User extends Document {
   @Prop({ required: true, default: [] })
   favoriteRecipesIds: string[];
 
-  @Prop({ type: Subscription, default: {} }) // Subdocumento com default
+  @Prop({ type: Subscription, default: {} })
   subscription: Subscription;
 
   @Prop()
