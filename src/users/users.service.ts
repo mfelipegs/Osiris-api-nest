@@ -38,8 +38,22 @@ export class UsersService {
     return newUser.save();
   }
 
-  findAll(): Promise<User[]> {
-    return this.userModel.find().exec();
+  async list(page: number, itemsPerPage: number) {
+    const totalItems = await this.userModel.countDocuments().exec();
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    const data = await this.userModel
+      .find()
+      .skip((page - 1) * itemsPerPage)
+      .limit(itemsPerPage);
+
+    return {
+      data,
+      page,
+      itemsPerPage,
+      totalItems,
+      totalPages,
+    };
   }
 
   async findOne(id: string): Promise<User> {

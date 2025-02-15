@@ -8,6 +8,7 @@ import {
   Delete,
   HttpCode,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -26,8 +27,15 @@ export class UsersController {
 
   @Get()
   @UseGuards(AuthGuard)
-  findAll() {
-    return this.usersService.findAll();
+  async findAll(
+    @Query('page') page = 1,
+    @Query('itemsPerPage') itemsPerPage = 5,
+  ) {
+    const result = await this.usersService.list(
+      Number(page),
+      Number(itemsPerPage),
+    );
+    return result;
   }
 
   @Get(':id')
