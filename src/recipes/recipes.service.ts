@@ -40,15 +40,15 @@ export class RecipesService {
       throw new BadRequestException(`'${id}' is not a valid id`);
     }
 
-    const recipe = await this.recipeModel
+    const updatedRecipe = await this.recipeModel
       .findByIdAndUpdate(id, updateRecipeDto, { new: true })
       .exec();
 
-    if (!recipe) {
+    if (!updatedRecipe) {
       throw new NotFoundException(`Recipe ${id} not found`);
     }
 
-    return recipe;
+    return updatedRecipe;
   }
 
   async remove(id: string) {
