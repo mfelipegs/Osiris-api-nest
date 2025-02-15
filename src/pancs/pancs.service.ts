@@ -13,7 +13,15 @@ import { Panc } from './schemas/pancs.schema';
 export class PancsService {
   constructor(@InjectModel(Panc.name) private pancModel: Model<Panc>) {}
 
-  create(createPancDto: CreatePancDto): Promise<Panc> {
+  async create(createPancDto: CreatePancDto): Promise<Panc> {
+    const { namePanc } = createPancDto;
+
+    const pancInDatabase = await this.pancModel.findOne({ namePanc }).exec();
+
+    if (pancInDatabase) {
+      throw new BadRequestException(`This PANC already exists.`);
+    }
+
     const newPanc = new this.pancModel(createPancDto);
     return newPanc.save();
   }
@@ -22,7 +30,7 @@ export class PancsService {
     return this.pancModel.find().exec();
   }
 
-  async findOne(id: string): Promise<Panc | null> {
+  async findOne(id: string): Promise<Panc> {
     if (!isValidObjectId(id)) {
       throw new BadRequestException(`'${id}' is not a valid id`);
     }
@@ -37,6 +45,14 @@ export class PancsService {
   async update(id: string, updatePancDto: UpdatePancDto): Promise<Panc> {
     if (!isValidObjectId(id)) {
       throw new BadRequestException(`'${id}' is not a valid id`);
+    }
+
+    const { namePanc } = updatePancDto;
+
+    const pancInDatabase = await this.pancModel.findOne({ namePanc }).exec();
+
+    if (pancInDatabase) {
+      throw new BadRequestException(`This PANC already exists.`);
     }
 
     const updatedPanc = await this.pancModel

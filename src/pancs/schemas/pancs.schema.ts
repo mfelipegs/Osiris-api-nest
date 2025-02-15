@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Panc extends Document {
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
   namePanc: string;
 
   @Prop({ required: true })
