@@ -3,8 +3,8 @@ import { Document, Types } from 'mongoose';
 
 @Schema()
 export class Prediction extends Document {
-  @Prop({ required: true })
-  image: string;
+  @Prop({ type: String, required: false })
+  image?: string;
 
   @Prop({ type: Date, default: () => new Date() })
   date: Date;

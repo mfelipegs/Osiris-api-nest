@@ -16,7 +16,7 @@ export enum PredictionStatus {
 
 export class CreatePredictionDto {
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   image: string;
 
   @IsDate()

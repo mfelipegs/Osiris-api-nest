@@ -3,6 +3,8 @@ import { PredictionService } from './prediction.service';
 import { PredictionController } from './prediction.controller';
 import { CloudinaryModule } from 'nestjs-cloudinary';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { Prediction, PredictionSchema } from './schemas/prediction.schema';
 
 @Module({
   imports: [
@@ -15,6 +17,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         api_secret: configService.get<string>('CLOUDINARY_SECRET'),
       }),
     }),
+    MongooseModule.forFeature([
+      { name: Prediction.name, schema: PredictionSchema },
+    ]),
   ],
   controllers: [PredictionController],
   providers: [PredictionService],
