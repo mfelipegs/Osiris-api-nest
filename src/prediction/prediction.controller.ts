@@ -5,6 +5,8 @@ import {
   Body,
   UploadedFile,
   UseInterceptors,
+  InternalServerErrorException,
+  UseGuards,
 } from '@nestjs/common';
 import { PredictionService } from './prediction.service';
 import { CreatePredictionDto } from './dto/create-prediction.dto';
@@ -13,6 +15,7 @@ import { CloudinaryService } from 'nestjs-cloudinary';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
 import { PredictionStatus } from './enums/prediction-status';
+import { AuthGuard } from 'src/auth/guards/auth.guard';
 
 interface AIPredictionResponse {
   classe: string;
@@ -28,6 +31,7 @@ export class PredictionController {
   ) {}
 
   @Post()
+  @UseGuards(AuthGuard)
   @UseInterceptors(FileInterceptor('image'))
   async create(
     @Body() createPredictionDto: CreatePredictionDto,
@@ -53,16 +57,21 @@ export class PredictionController {
         createPredictionDto.accuracy = aiResponse.data.acuracia;
       } else {
         createPredictionDto.status = PredictionStatus.FAILED;
+        await this.predictionService.create(createPredictionDto);
+        throw new InternalServerErrorException('Error processing image.');
       }
-    } catch (error) {
-      console.error('Error on requesting the IA API:', error);
-      createPredictionDto.status = PredictionStatus.FAILED;
-    }
 
-    return this.predictionService.create(createPredictionDto);
+      return this.predictionService.create(createPredictionDto);
+    } catch (error) {
+      console.error('Error on requesting AI API', error);
+      createPredictionDto.status = PredictionStatus.FAILED;
+      await this.predictionService.create(createPredictionDto);
+      throw new InternalServerErrorException('Error processing image.');
+    }
   }
 
   @Get()
+  @UseGuards(AuthGuard)
   findAll() {
     return this.predictionService.findAll();
   }
