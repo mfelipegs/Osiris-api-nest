@@ -1,0 +1,733 @@
+{
+	"info": {
+		"_postman_id": "6670ed54-1b92-45aa-91de-af3c19ada022",
+		"name": "Osiris Nest.js",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42354028"
+	},
+	"item": [
+		{
+			"name": "pancs",
+			"item": [
+				{
+					"name": "Create PANC",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"namePanc\": \"Panc X\",\n    \"description\": \"A panc4 é uma PANC nutritiva e versátil, rica em vitaminas A, C, do complexo B, ferro e cálcio. Possui propriedades antioxidantes e anti-inflamatórias, fortalecendo o sistema imunológico e reduzindo o risco de doenças crônicas. Pode ser usada em refogados e saladas.\",\n    \"cultivation\": [\"a\", \"b\", \"c cultiv\"],\n    \"benefits\": \"A taioba é uma PANC muito versátil e nutritiva. Suas folhas são comestíveis e ricas em nutrientes como vitaminas A, C e do complexo B, além de minerais como ferro e cálcio. Ela possui propriedades antioxidantes e anti-inflamatórias, contribuindo para a saúde do sistema imunológico e a redução do risco de doenças crônicas. A taioba pode ser utilizada em diversas receitas, desde refogados até saladas, trazendo um sabor característico e uma dose extra de nutrientes para as refeições.\",\n    \"locale\": \"pt\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/pancs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"pancs"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Taioba",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"namePanc\": \"Taioba\",\n    \"description\": \"A taioba é uma PANC nutritiva e versátil, rica em vitaminas A, C, do complexo B, ferro e cálcio. Possui propriedades antioxidantes e anti-inflamatórias, fortalecendo o sistema imunológico e reduzindo o risco de doenças crônicas. Pode ser usada em refogados e saladas.\",\n    \"cultivation\": [\"a\", \"b\", \"c cultiv\"],\n    \"benefits\": \"A taioba é uma PANC muito versátil e nutritiva. Suas folhas são comestíveis e ricas em nutrientes como vitaminas A, C e do complexo B, além de minerais como ferro e cálcio. Ela possui propriedades antioxidantes e anti-inflamatórias, contribuindo para a saúde do sistema imunológico e a redução do risco de doenças crônicas. A taioba pode ser utilizada em diversas receitas, desde refogados até saladas, trazendo um sabor característico e uma dose extra de nutrientes para as refeições.\",\n    \"image\": \"http://res.cloudinary.com/dvxkj7fwq/image/upload/v1699569362/c5f677f5-70c1-4cbe-8df0-61789a32e83c.jpg\",\n    \"locale\": \"pt\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/pancs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"pancs"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "List PANCS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/pancs?page=1&itemsPerPage=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"pancs"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "itemsPerPage",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find PANC",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/pancs/67b089b803ad901f9074b55b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"pancs",
+								"67b089b803ad901f9074b55b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update PANC",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"namePanc\": \"panc 2 patch test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/pancs/67b089b803ad901f9074b55b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"pancs",
+								"67b089b803ad901f9074b55b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete PANC",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/pancs/67b0889a03ad901f9074b54f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"pancs",
+								"67b0889a03ad901f9074b54f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "recipes",
+			"item": [
+				{
+					"name": "Create recipe",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nameRecipe\": \"Sopa de Inhame Nutritiva\",\n    \"description\": \"Uma sopa reconfortante e nutritiva, feita com inhame, cenoura, cebola e alho. Cozidos em caldo de legumes e temperados a gosto, os vegetais são transformados em uma mistura cremosa no liquidificador. Uma opção saudável e deliciosa para aquecer os dias.\",\n    \"pancs\": [\"Inhame\"],\n    \"ingredients\": [\"2 inhames médios\", \"1 cenoura\", \"1 cebola\"],\n    \"preparation\": [\"Descasque e corte os inhames, a cenoura, a cebola e o alho.\", \"Em uma panela, refogue a cebola e o alho até dourarem.\", \"Adicione os inhames e a cenoura, refogue por alguns minutos.\", \"Despeje o caldo de legumes na panela e cozinhe até que os vegetais fiquem macios.\"],\n    \"image\": \"http://res.cloudinary.com/dvxkj7fwq/image/upload/v1699569362/c5f677f5-70c1-4cbe-8df0-61789a32e83c.jpg\",\n    \"userId\": \"67b0b4845f4ca1fae096a339\",\n    \"locale\": \"pt\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/recipes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"recipes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Creating Yam Soup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nameRecipe\": \"Sopa de Inhame Nutritiva\",\n    \"description\": \"Uma sopa reconfortante e nutritiva, feita com inhame, cenoura, cebola e alho. Cozidos em caldo de legumes e temperados a gosto, os vegetais são transformados em uma mistura cremosa no liquidificador. Uma opção saudável e deliciosa para aquecer os dias.\",\n    \"pancs\": [\"Inhame\"],\n    \"ingredients\": [\"2 inhames médios\", \"1 cenoura\", \"1 cebola\"],\n    \"preparation\": [\"Descasque e corte os inhames, a cenoura, a cebola e o alho.\", \"Em uma panela, refogue a cebola e o alho até dourarem.\", \"Adicione os inhames e a cenoura, refogue por alguns minutos.\", \"Despeje o caldo de legumes na panela e cozinhe até que os vegetais fiquem macios.\"],\n    \"image\": \"http://res.cloudinary.com/dvxkj7fwq/image/upload/v1699569362/c5f677f5-70c1-4cbe-8df0-61789a32e83c.jpg\",\n    \"userId\": \"67b0b4845f4ca1fae096a339\",\n    \"locale\": \"pt\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/pancs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"pancs"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"nameRecipe\": \"Sopa de Inhame Nutritiva\",\n    \"description\": \"Uma sopa reconfortante e nutritiva, feita com inhame, cenoura, cebola e alho. Cozidos em caldo de legumes e temperados a gosto, os vegetais são transformados em uma mistura cremosa no liquidificador. Uma opção saudável e deliciosa para aquecer os dias.\",\n    \"pancs\": [\n        \"Inhame\"\n    ],\n    \"ingredients\": [\n        \"2 inhames médios\",\n        \"1 cenoura\",\n        \"1 cebola\"\n    ],\n    \"preparation\": [\n        \"Descasque e corte os inhames, a cenoura, a cebola e o alho.\",\n        \"Em uma panela, refogue a cebola e o alho até dourarem.\",\n        \"Adicione os inhames e a cenoura, refogue por alguns minutos.\",\n        \"Despeje o caldo de legumes na panela e cozinhe até que os vegetais fiquem macios.\"\n    ],\n    \"image\": \"http://res.cloudinary.com/dvxkj7fwq/image/upload/v1699569362/c5f677f5-70c1-4cbe-8df0-61789a32e83c.jpg\",\n    \"userId\": \"67b0b4845f4ca1fae096a339\",\n    \"locale\": \"pt\",\n    \"_id\": \"67b0ccb9bcd0205df9e20a93\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "List recipes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/recipes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"recipes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find recipe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/recipes/67b0ccb9bcd0205df9e20a93",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"recipes",
+								"67b0ccb9bcd0205df9e20a93"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update recipe",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nameRecipe\": \"receitainhame4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/recipes/67b0ccb9bcd0205df9e20a93",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"recipes",
+								"67b0ccb9bcd0205df9e20a93"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete recipe",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/recipes/67b0ccb9bcd0205df9e20a93",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"recipes",
+								"67b0ccb9bcd0205df9e20a93"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nameUser\": \"John Doe103\",\n    \"email\": \"johndoe103@protonmail.com\",\n    \"password\": \"passwordtest123%%A\",\n    \"favoritePancsIds\": [],\n    \"favoriteRecipesIds\": []\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Creating John Doe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\n{\n    \"nameUser\": \"John Doe99\",\n    \"email\": \"johndoe99@protonmail.com\",\n    \"password\": \"passwordtest123%%A\",\n    \"favoritePancsIds\": [],\n    \"favoriteRecipesIds\": []\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"nameUser\": \"John Doe\",\n    \"email\": \"johndoe@protonmail.com\",\n    \"password\": \"$2b$10$fTaR6Cw2osCB8GcZ59XVNOGJNI3MBX3xo64zwyRo.X.xtpJfYS2aC\",\n    \"favoritePancsIds\": [],\n    \"favoriteRecipesIds\": [],\n    \"subscription\": {\n        \"active\": false\n    },\n    \"_id\": \"67b0b4845f4ca1fae096a339\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "List users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/users/67b0b0245285da013802c9aa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users",
+								"67b0b0245285da013802c9aa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nameUser\": \"John Doe S\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/users/67b0b0245285da013802c9aa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users",
+								"67b0b0245285da013802c9aa"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "John Doe to John Doe S",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nameUser\": \"John Doe S\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/67b0b0245285da013802c9aa",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"67b0b0245285da013802c9aa"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"_id\": \"67b0b0245285da013802c9aa\",\n    \"nameUser\": \"John Doe S\",\n    \"email\": \"johndoe@protonmail.com\",\n    \"password\": \"$2b$10$hVxKhc8CuOvfn.1MQileHe6H39Z3AEDgWciWShTtz/x3olu8IFau6\",\n    \"favoritePancsIds\": [],\n    \"favoriteRecipesIds\": [],\n    \"subscription\": {\n        \"active\": false\n    },\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/users/67b0b0245285da013802c9aa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"users",
+								"67b0b0245285da013802c9aa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"johndoe@protonmail.com\",\n    \"password\": \"passwordtest123%%A\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SIgnup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"johndoe104@protonmail.com\",\n    \"password\": \"passwordtest123%%A\",\n    \"nameUser\": \"john doasso 104\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "prediction",
+			"item": [
+				{
+					"name": "Create prediction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "67b0b4845f4ca1fae096a339",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/infiniti/Documents/Hibiscus_flower_TZ.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/v1/prediction",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"prediction"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Creating John Doe",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\n{\n    \"nameUser\": \"John Doe99\",\n    \"email\": \"johndoe99@protonmail.com\",\n    \"password\": \"passwordtest123%%A\",\n    \"favoritePancsIds\": [],\n    \"favoriteRecipesIds\": []\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/v1/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"v1",
+										"users"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"nameUser\": \"John Doe\",\n    \"email\": \"johndoe@protonmail.com\",\n    \"password\": \"$2b$10$fTaR6Cw2osCB8GcZ59XVNOGJNI3MBX3xo64zwyRo.X.xtpJfYS2aC\",\n    \"favoritePancsIds\": [],\n    \"favoriteRecipesIds\": [],\n    \"subscription\": {\n        \"active\": false\n    },\n    \"_id\": \"67b0b4845f4ca1fae096a339\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "List predictions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/v1/prediction",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"v1",
+								"prediction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2N2IwYjQ4NDVmNGNhMWZhZTA5NmEzMzkiLCJlbWFpbCI6ImpvaG5kb2VAcHJvdG9ubWFpbC5jb20iLCJpYXQiOjE3NDI2OTQxNjYsImV4cCI6MTc0MjcwMTM2Nn0.DtymaZF_gf3ChsANHhwJ9lLlMX6RmA9CtjhegAy0CJs",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
