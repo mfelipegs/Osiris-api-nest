@@ -30,7 +30,6 @@ async function bootstrap() {
     SwaggerModule.setup('api/docs', app, document);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const port = configService.get<number>('PORT', { infer: true }) ?? 3000;
   await app.listen(port);
 }
