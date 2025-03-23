@@ -14,6 +14,12 @@ export class Prediction extends Document {
 
   @Prop({ required: true, type: Types.ObjectId, ref: 'User' })
   userId: Types.ObjectId;
+
+  @Prop({ type: Number, required: false })
+  accuracy?: number;
+
+  @Prop({ type: String, required: false })
+  class?: string;
 }
 
 export const PredictionSchema = SchemaFactory.createForClass(Prediction);

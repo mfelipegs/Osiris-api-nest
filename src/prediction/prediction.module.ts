@@ -5,6 +5,7 @@ import { CloudinaryModule } from 'nestjs-cloudinary';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Prediction, PredictionSchema } from './schemas/prediction.schema';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { Prediction, PredictionSchema } from './schemas/prediction.schema';
     MongooseModule.forFeature([
       { name: Prediction.name, schema: PredictionSchema },
     ]),
+    HttpModule,
   ],
   controllers: [PredictionController],
   providers: [PredictionService],

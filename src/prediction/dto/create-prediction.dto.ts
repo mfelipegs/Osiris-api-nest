@@ -5,14 +5,10 @@ import {
   IsMongoId,
   IsEnum,
   IsDate,
+  IsNumber,
 } from 'class-validator';
 import { Types } from 'mongoose';
-
-export enum PredictionStatus {
-  PENDING = 'pending',
-  PROCESSED = 'processed',
-  FAILED = 'failed',
-}
+import { PredictionStatus } from '../enums/prediction-status';
 
 export class CreatePredictionDto {
   @IsString()
@@ -30,4 +26,12 @@ export class CreatePredictionDto {
   @IsMongoId()
   @IsNotEmpty()
   userId: Types.ObjectId;
+
+  @IsNumber()
+  @IsOptional()
+  accuracy: number;
+
+  @IsString()
+  @IsOptional()
+  class: string;
 }
